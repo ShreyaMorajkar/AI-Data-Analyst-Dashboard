@@ -66,19 +66,22 @@ const analyzeLimiter = rateLimit({
 const allowedOrigins = (process.env.FRONTEND_ORIGIN || '')
   .split(',')
   .map((origin) => origin.trim())
+  .map((origin) => origin.replace(/\/$/, ''))
   .filter(Boolean)
 
 const EMAIL_VERIFICATION_DISABLED = String(process.env.EMAIL_VERIFICATION_DISABLED || '').toLowerCase() === 'true'
 
 function corsOriginHandler(origin, callback) {
+  const normalizedOrigin = origin ? String(origin).replace(/\/$/, '') : origin
+
   // Allow any local Vite origin without having to keep FRONTEND_ORIGIN in sync with ports.
   // Safe: browsers can only send these origins if the page is actually running locally.
-  if (origin && /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+  if (normalizedOrigin && /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(normalizedOrigin)) {
     callback(null, true)
     return
   }
 
-  if (!origin || !allowedOrigins.length || allowedOrigins.includes(origin)) {
+  if (!normalizedOrigin || !allowedOrigins.length || allowedOrigins.includes(normalizedOrigin)) {
     callback(null, true)
     return
   }
