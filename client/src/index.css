@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+:root {
+  --font-sans: "Manrope", "Aptos", "Segoe UI", sans-serif;
+  --font-serif: "Playfair Display", "Georgia", serif;
+
+  /* Gold accent system */
+  --gold: #c9a84c;
+  --gold-light: #e2cc7a;
+  --gold-dim: rgba(201, 168, 76, 0.15);
+  --gold-glow: rgba(201, 168, 76, 0.25);
+  --gold-border: rgba(201, 168, 76, 0.22);
+
+  /* Surface system */
+  --surface-base: #09090b;
+  --surface-raised: rgba(255, 255, 255, 0.015);
+  --surface-hover: rgba(255, 255, 255, 0.035);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-width: 320px;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--surface-base);
+    color: #c4c4c8;
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── Noise texture overlay ────────────────────────── */
+  #root {
+    min-height: 100vh;
+    position: relative;
+  }
+
+  #root::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+  }
+
+  /* ── Dot-grid backdrop ────────────────────────────── */
+  #root::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.30;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* ── Ambient corner glows ─────────────────────────── */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 600px 500px at 5% 2%, rgba(201, 168, 76, 0.07), transparent),
+      radial-gradient(ellipse 500px 600px at 95% 95%, rgba(34, 211, 238, 0.05), transparent),
+      radial-gradient(ellipse 800px 400px at 50% 0%, rgba(255, 255, 255, 0.015), transparent);
+  }
+
+  /* Ensure actual content sits above overlays */
+  #root > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Typography ───────────────────────────────────── */
+  h1 {
+    margin: 0;
+    color: #fafaf9;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  h2,
+  h3 {
+    margin: 0;
+    color: #fafaf9;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  button,
+  textarea,
+  input {
+    font: inherit;
+  }
+
+  ::selection {
+    background: rgba(201, 168, 76, 0.28);
+    color: #fafaf9;
+  }
+
+  /* ── Scrollbar ────────────────────────────────────── */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(201, 168, 76, 0.12);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(201, 168, 76, 0.25);
+  }
+}
+
+/* ── Utility classes ──────────────────────────────── */
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .border-gold {
+    border-color: var(--gold-border);
+  }
+
+  .bg-gold {
+    background-color: var(--gold);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px var(--gold-glow), 0 0 60px rgba(201, 168, 76, 0.08);
+  }
+
+  /* Shimmer effect for premium buttons */
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .btn-gold {
+    background: linear-gradient(110deg, var(--gold) 0%, var(--gold-light) 45%, var(--gold) 55%, var(--gold) 100%);
+    background-size: 200% 100%;
+    color: #09090b;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gold:hover {
+    animation: shimmer 1.8s ease infinite;
+    box-shadow: 0 0 24px rgba(201, 168, 76, 0.2), 0 4px 16px rgba(201, 168, 76, 0.12);
+  }
+
+  .btn-gold:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    animation: none;
+  }
+
+  /* Gold outline button variant */
+  .btn-gold-outline {
+    background: transparent;
+    border: 1px solid var(--gold-border);
+    color: var(--gold);
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gold-outline:hover {
+    border-color: var(--gold);
+    background: rgba(201, 168, 76, 0.06);
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.08);
+  }
+}

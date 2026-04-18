@@ -1,0 +1,22 @@
+{
+  "name": "ai-powered-data-analyst-dashboard",
+  "version": "1.0.0",
+  "description": "Full-stack AI-style data analyst dashboard for CSV insights",
+  "scripts": {
+    "setup": "npm install --prefix server && npm install --prefix client",
+    "setup:python": "python -m pip install -r python-service/requirements.txt",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\" \"npm run dev:python\"",
+    "dev:python": "python python-service/app.py",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server",
+    "verify": "npm run build --prefix client && node --check server/index.js && python -c \"import os,tempfile,py_compile; tmp=tempfile.NamedTemporaryFile(delete=False); tmp.close(); py_compile.compile('python-service/app.py', cfile=tmp.name); os.unlink(tmp.name)\"",
+    "smoke:test": "node scripts/smoke-test.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

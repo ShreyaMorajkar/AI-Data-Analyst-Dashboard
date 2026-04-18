@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: ai-analyst-api
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: AI_PROVIDER
+        value: gemini
+      - key: PYTHON_SERVICE_URL
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: FRONTEND_VERIFY_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: EMAIL_VERIFICATION_DISABLED
+        value: "true"
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB
+        value: ai_data_analyst_dashboard
+  - type: web
+    name: ai-analyst-python
+    env: python
+    rootDir: python-service
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT

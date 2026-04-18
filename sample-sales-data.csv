@@ -1,0 +1,31 @@
+Date,Region,Product,Category,Sales,Orders,Profit,Customer_Segment,Channel
+2026-01-03,North,Laptop Pro,Electronics,125000,25,24000,Enterprise,Online
+2026-01-07,South,Smartphone X,Electronics,98000,42,21000,Consumer,Retail
+2026-01-11,East,Office Chair,Furniture,34000,18,6800,SMB,Online
+2026-01-15,West,Standing Desk,Furniture,42000,14,9100,Enterprise,Direct
+2026-01-21,North,Tablet Air,Electronics,51000,27,10200,Consumer,Online
+2026-02-02,South,Laptop Pro,Electronics,132000,28,25800,Enterprise,Direct
+2026-02-06,East,Smartwatch S,Electronics,27000,31,5900,Consumer,Retail
+2026-02-10,West,Bookshelf,Furniture,19000,12,4100,SMB,Online
+2026-02-14,North,Office Chair,Furniture,36000,19,7200,SMB,Direct
+2026-02-20,South,Tablet Air,Electronics,56000,29,11300,Consumer,Online
+2026-03-01,East,Laptop Pro,Electronics,141000,30,27600,Enterprise,Online
+2026-03-05,West,Smartphone X,Electronics,101000,44,22400,Consumer,Retail
+2026-03-09,North,Standing Desk,Furniture,46000,16,9800,Enterprise,Direct
+2026-03-13,South,Office Chair,Furniture,39000,20,7700,SMB,Online
+2026-03-22,East,Tablet Air,Electronics,59000,32,11800,Consumer,Direct
+2026-04-03,West,Laptop Pro,Electronics,149000,31,29100,Enterprise,Online
+2026-04-08,North,Smartwatch S,Electronics,29000,34,6200,Consumer,Retail
+2026-04-12,South,Bookshelf,Furniture,21000,13,4500,SMB,Online
+2026-04-18,East,Standing Desk,Furniture,48500,17,10300,Enterprise,Direct
+2026-04-24,West,Tablet Air,Electronics,61000,33,12200,Consumer,Online
+2026-05-02,North,Laptop Pro,Electronics,154000,32,30200,Enterprise,Direct
+2026-05-07,South,Smartphone X,Electronics,107000,46,23600,Consumer,Retail
+2026-05-11,East,Office Chair,Furniture,41000,21,8100,SMB,Online
+2026-05-16,West,Standing Desk,Furniture,50000,18,10800,Enterprise,Direct
+2026-05-27,North,Tablet Air,Electronics,64000,35,12700,Consumer,Online
+2026-06-04,South,Laptop Pro,Electronics,160000,34,31500,Enterprise,Online
+2026-06-09,East,Smartwatch S,Electronics,30500,36,6500,Consumer,Retail
+2026-06-14,West,Bookshelf,Furniture,22500,14,4700,SMB,Direct
+2026-06-19,North,Office Chair,Furniture,43000,22,8500,SMB,Online
+2026-06-25,South,Tablet Air,Electronics,67000,37,13300,Consumer,Direct
